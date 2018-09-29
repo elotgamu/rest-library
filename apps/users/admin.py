@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 
-from .models import User
+from .models import User, Librarian
 
 # Register your models here.
 
@@ -47,3 +47,12 @@ class MyUserAdmin(AuthUserAdmin):
     ) + AuthUserAdmin.fieldsets
     list_display = ('username', 'first_name', 'last_name', 'email', 'profile')
     search_fields = ['email']
+
+
+class LibrarianAdmin(admin.ModelAdmin):
+    '''
+        Admin View for Librarian
+    '''
+
+
+admin.site.register(Librarian, LibrarianAdmin)

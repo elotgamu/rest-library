@@ -38,3 +38,19 @@ class User(AbstractUser):
 
     def is_student(self):
         return True if self.profile == STUDENT else False
+
+
+class Librarian(models.Model):
+    """Library profile related model """
+    user = models.OneToOneField(User,
+                                on_delete=models.CASCADE,
+                                primary_key=True)
+
+    class Meta:
+        verbose_name = "Librarian"
+        verbose_name_plural = "Librarians"
+
+    def __str__(self):
+        return self.user.name
+
+    # TODO: Define custom methods here
